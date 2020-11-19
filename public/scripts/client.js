@@ -4,31 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-  // const tweetData = [
-  //   {
-  //     "user": {
-  //       "name": "Newton",
-  //       "avatars": "https://i.imgur.com/73hZDYK.png"
-  //       ,
-  //       "handle": "@SirIsaac"
-  //     },
-  //     "content": {
-  //       "text": "If I have seen further it is by standing on the shoulders of giants"
-  //     },
-  //     "created_at": 1461116232227
-  //   },
-  //   {
-  //     "user": {
-  //       "name": "Descartes",
-  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
-  //       "handle": "@rd" },
-  //     "content": {
-  //       "text": "Je pense , donc je suis"
-  //     },
-  //     "created_at": 1461113959088
-  //   }
-  // ]
-
   const createTweetElement = (tweet) => {
     const $tweet = $(`
     <article class="tweet">
@@ -63,18 +38,24 @@
       })
     };
 
+    //tweet submission
     $("#tweet-form").submit((event) => {
-      event.preventDefault();
-      const tweet = $("#tweet-text").val();
 
+      //prevent default form submit event so we can define our own
+      event.preventDefault();
+
+      const tweet = $("#tweet-text").val();
+      //send alert and don't submit form if tweet is empty
       if (!tweet) {
         alert("You didn't write anything!");
         return;
       }
+      //send alert and don't submit form if tweet is too long
       if (tweet.length > 140) {
         alert("Tweet too long!")
         return;
       }
+      //encode form data as query string and send to server
       const stringData = $("#tweet-form").serialize();
       $.post("/tweets", stringData, () => {
         console.log("success mate");
