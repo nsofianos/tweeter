@@ -4,22 +4,32 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+const escape = (str) => {
+  const div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
   const createTweetElement = (tweet) => {
     const $tweet = $(`
     <article class="tweet">
     <header class="tweet-header">
-      <h2>${tweet.user.name}</h2>
-      <h3 class="my-tag">${tweet.user.handle}</h3>
+      <div class="users-name">
+        <h2>${tweet.user.name}<h2>
+      </div>
+      <div class="users-handle">
+        <h3>${tweet.user.handle}</h3>
+      </div>
     </header>
     <div>
-      <p>${tweet.content.text}</p>
+      <p>${escape(tweet.content.text)}</p>
     </div>
     <hr>
     <footer class="tweet-footer">
       <p>10 days ago</p>
       <p class="icons">icons</p>
     </footer>
-  </article>`);
+    </article>`);
     return $tweet;
   };
   
@@ -28,7 +38,7 @@
       $("#tweets-container").append(createTweetElement(tweet));
     }
   }
-
+  
 
   $(document).ready(() => {
 
@@ -63,10 +73,13 @@
         return;
       }
       //encode form data as query string and send to server
-      const stringData = $("#tweet-form").serialize();
+       const stringData = $("#tweet-form").serialize();
 
-      $.post("/tweets", stringData, () => {
-        postTweet();
+      $.post("/tweets", stringData, (tweet) => {
+        //postTweet();
+        $("#tweets-container").prepend(createTweetElement(tweet));
+
+
       });
       
     });

@@ -9,3 +9,7 @@
   color: #ffffff;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
 }
+
+span.last-name {
+  font-weight: normal;
+}

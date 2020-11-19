@@ -18,12 +18,12 @@
   box-shadow: 10px 10px rgba(194, 185, 185, 0.829);
   font-weight: bold;
 }
-.tweet:hover .my-tag {
+.tweet:hover .users-handle {
   color:darkgray;
 }
 
 
-.my-tag {
+.users-handle {
   color: #f4f1ec;
 }
 
