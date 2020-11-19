@@ -64,7 +64,17 @@
     };
 
     $("#tweet-form").submit((event) => {
-      event.preventDefault()
+      event.preventDefault();
+      const tweet = $("#tweet-text").val();
+
+      if (!tweet) {
+        alert("You didn't write anything!");
+        return;
+      }
+      if (tweet.length > 140) {
+        alert("Tweet too long!")
+        return;
+      }
       const stringData = $("#tweet-form").serialize();
       $.post("/tweets", stringData, () => {
         console.log("success mate");
