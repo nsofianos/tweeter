@@ -1,0 +1,19 @@
+nav {
+  display:flex;
+  background-color: #4056A1;
+  height: 120px;
+  width: 100vw;
+  color: #ffffff;
+  padding: 1.5em;
+  font-family: 'Bungee', cursive; 
+  font-size: 42px;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top:0;
+}
+
+.write-new-tweet {
+  font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
+}

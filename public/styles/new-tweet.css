@@ -1,0 +1,45 @@
+@import "variables.css";
+
+.tweet-button, .button-area {
+  font-family: 'Bungee', cursive;
+}
+
+.new-tweet {
+  display: flex;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+textarea {
+  width:100%;
+  resize: none;
+  background-color: var(--primary-background);
+  border: none;
+  border-bottom: 3px solid #545149;
+}
+
+.tweet-form {
+  width:100%;
+}
+
+.tweet-button {
+  background-color: #4056A1;
+  border: none;
+  color: #ffffff;
+  height:35px;
+}
+
+.button-area {
+  display:flex;
+  margin-top:5px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+textarea:focus {
+  outline: none;
+  border:1px solid red;
+  border:none;
+  border-bottom: 3px solid #545149;
+}
