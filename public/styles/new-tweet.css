@@ -1,9 +1,5 @@
 @import "variables.css";
 
-.tweet-button, .button-area {
-  font-family: 'Bungee', cursive;
-}
-
 .new-tweet {
   display: flex;
   margin-top: 1em;
@@ -19,11 +15,11 @@ textarea {
   border-bottom: 3px solid #545149;
 }
 
-.tweet-form {
+#tweet-form {
   width:100%;
 }
 
-.tweet-button {
+#tweet-button {
   background-color: #4056A1;
   border: none;
   color: #ffffff;
@@ -31,6 +27,7 @@ textarea {
 }
 
 .button-area {
+  font-family: 'Bungee', cursive;
   display:flex;
   margin-top:5px;
   flex-direction: row;

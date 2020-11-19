@@ -53,7 +53,17 @@
       $("#tweets-container").append(createTweetElement(tweet));
     }
   }
-  
-  $(document).ready(function() {
+
+  $(document).ready(() => {
+
     renderTweets(tweetData);
+
+    $("#tweet-form").submit(function(event) {
+      event.preventDefault()
+      const stringData = $("#tweet-form").serialize();
+      $.post("/tweets", stringData, () => {
+        console.log("success mate");
+      });
+    });
+
   });
