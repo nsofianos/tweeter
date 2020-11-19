@@ -29,12 +29,19 @@
     }
   }
 
+
   $(document).ready(() => {
 
     const loadTweets = () => {
-      $.get("/tweets")
-      .then((tweets) => {
+      $.get("/tweets", (tweets) => {
         renderTweets(tweets);
+      });
+    };
+
+    const postTweet = () => {
+      $.get("/tweets", (tweets) => {
+        const latestTweet = tweets[tweets.length - 1];
+        $("#tweets-container").prepend(createTweetElement(latestTweet));
       })
     };
 
@@ -57,10 +64,13 @@
       }
       //encode form data as query string and send to server
       const stringData = $("#tweet-form").serialize();
+
       $.post("/tweets", stringData, () => {
-        console.log("success mate");
+        postTweet();
       });
+      
     });
 
     loadTweets();
+
   });
