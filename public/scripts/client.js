@@ -56,9 +56,8 @@
 
   $(document).ready(() => {
 
-    renderTweets(tweetData);
 
-    $("#tweet-form").submit(function(event) {
+    $("#tweet-form").submit((event) => {
       event.preventDefault()
       const stringData = $("#tweet-form").serialize();
       $.post("/tweets", stringData, () => {
@@ -66,4 +65,11 @@
       });
     });
 
+    const loadTweets = () => {
+      $.get("/tweets")
+      .then((tweets) => {
+        renderTweets(tweets);
+      })
+    };
+    loadTweets();
   });
