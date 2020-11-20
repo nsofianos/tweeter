@@ -112,15 +112,16 @@ const renderTweets = (tweets) => {
        const stringData = $("#tweet-form").serialize();
 
       $.post("/tweets", stringData, (tweet) => {
+        //prepend article
         $("#tweets-container").prepend(createTweetElement(tweet));
+        //hide error msg
         $("div.error-msg").slideUp();
+        //clear form
         $("#tweet-text").val('');
+        //reset counter
         $(".counter").val(140);
-
       });
-      
     });
-
+    //load tweets on startup
     loadTweets();
-
   });
