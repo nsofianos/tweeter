@@ -13,7 +13,14 @@ nav {
   top:0;
 }
 
-.write-new-tweet {
+div.write-new-tweet {
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#double-arrow {
+  color:red;
 }

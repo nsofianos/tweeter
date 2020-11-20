@@ -1,10 +1,15 @@
 $(document).ready(function() {
-  // --- our code goes here ---
+
   $("#tweet-text").on('input', function() {
-    //console.log(($(".counter").val() - $("#tweet-text").val().length));
-    //console.log($(".counter").val());
+    //subtract value of tweet-text from maximum character limit and store in variable
     const newval = (140 - $("#tweet-text").val().length);
-    //console.log(newval);
+    //make characters red if they exceed limit
+    if (newval < 0 ) {
+      $(".counter").addClass("red-counter");
+    } else {
+      $(".counter").removeClass("red-counter");
+    }
+    //update counter to reflect characters remaining
     $(".counter").val(newval);
   });
 });

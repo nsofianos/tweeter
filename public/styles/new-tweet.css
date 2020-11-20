@@ -1,10 +1,27 @@
 @import "variables.css";
 
-.new-tweet {
+section.new-tweet {
   display: flex;
-  margin-top: 1em;
+  flex-direction: column;
   margin-bottom: 1em;
   padding: 1em;
+}
+
+div.error-msg{
+  display:flex;
+  flex-direction: row;
+  padding:0.5em;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid;
+  color:red;
+  flex-shrink: 4;
+}
+
+p.error-msg{
+  margin: 0;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 textarea {
@@ -15,8 +32,16 @@ textarea {
   border-bottom: 3px solid #545149;
 }
 
+textarea:focus {
+  outline: none;
+  border:1px solid red;
+  border:none;
+  border-bottom: 3px solid #545149;
+}
+
 #tweet-form {
   width:100%;
+  margin-top:1em;
 }
 
 #tweet-button {
@@ -34,9 +59,7 @@ textarea {
   justify-content: space-between;
 }
 
-textarea:focus {
-  outline: none;
-  border:1px solid red;
-  border:none;
-  border-bottom: 3px solid #545149;
+
+.red-counter {
+  color:red;
 }

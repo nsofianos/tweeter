@@ -42,17 +42,13 @@ const escape = (str) => {
 
   $(document).ready(() => {
 
+    //Hide error msg by default
+    $("div.error-msg").hide();
+
     const loadTweets = () => {
       $.get("/tweets", (tweets) => {
         renderTweets(tweets);
       });
-    };
-
-    const postTweet = () => {
-      $.get("/tweets", (tweets) => {
-        const latestTweet = tweets[tweets.length - 1];
-        $("#tweets-container").prepend(createTweetElement(latestTweet));
-      })
     };
 
     //tweet submission
@@ -62,23 +58,25 @@ const escape = (str) => {
       event.preventDefault();
 
       const tweet = $("#tweet-text").val();
+
       //send alert and don't submit form if tweet is empty
       if (!tweet) {
-        alert("You didn't write anything!");
+        $("p.error-msg").text("You didn't write anything!");
+        $("div.error-msg").slideDown(200);
         return;
       }
       //send alert and don't submit form if tweet is too long
       if (tweet.length > 140) {
-        alert("Tweet too long!")
+        $("p.error-msg").text("Too many characters, trim the essay please!");
+        $("div.error-msg").slideDown(200);
         return;
       }
       //encode form data as query string and send to server
        const stringData = $("#tweet-form").serialize();
 
       $.post("/tweets", stringData, (tweet) => {
-        //postTweet();
         $("#tweets-container").prepend(createTweetElement(tweet));
-
+        $("div.error-msg").slideUp();
 
       });
       

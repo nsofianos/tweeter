@@ -20,9 +20,13 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css">
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css"/>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
-    <!-- External JS -->
+
+    <!-- AJAX -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Fontawesome icons -->
     
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
@@ -33,8 +37,11 @@
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
-      <span>tweeter</span>
-      <div class="write-new-tweet"><strong>Write</strong> a new tweet</div>
+      <div>tweeter</div>
+      <div class="write-new-tweet">
+        Write a new tweet
+        <i id="double-arrow" class="fas fa-angle-double-down"></i>
+      </div>
     </nav>
 
     <!-- Site header -->
@@ -53,6 +60,15 @@
     <main>
       <!-- New tweet section -->
       <section class="new-tweet">
+        <!-- Error message (hidden by default) -->
+        <div class="error-container">
+          <div class="error-msg">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p class="error-msg"></p>
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+        </div>
+        <!-- Tweet form submission -->
         <form id="tweet-form" method="POST" action="/tweets">
           <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
           <div class="button-area">
