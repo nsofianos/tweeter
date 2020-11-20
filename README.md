@@ -15,3 +15,8 @@ Tweeter is a simple, single-page Twitter clone.
 - Node 5.10.x or above
 - Body-parser
 - Chance
+
+## Screenshots
+
+!["Screenshot of Mobile view"](https://github.com/nsofianos/tweeter/blob/master/docs/mobile-view.png?raw=true)
+!["Screenshot of Desktop view"](https://github.com/nsofianos/tweeter/blob/master/docs/desktop-view.png?raw=true)
