@@ -1,11 +1,12 @@
-const helpers = require("./helpers");
 
+//Escape if user tries getting funky in tweet form
 const escape = (str) => {
   const div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
+//Shows how long ago a tweet was posted
 const timeSincePosted = (date) => {
 
   const seconds = Math.floor((new Date() - date) / 1000);
@@ -34,9 +35,10 @@ const timeSincePosted = (date) => {
   return Math.floor(seconds) + " seconds";
 };
 
-  const createTweetElement = (tweet) => {
-    const $tweet = $(`
-    <article class="tweet">
+//Create tweet element dynamically 
+const createTweetElement = (tweet) => {
+  const $tweet = $(`
+  <article class="tweet">
     <header class="tweet-header">
       <img class="avatar" src=${tweet.user.avatars} width="50" height="50"> 
       <div class="users-name">
@@ -58,15 +60,15 @@ const timeSincePosted = (date) => {
         <i class="fas fa-heart"></i>
       </div>
     </footer>
-    </article>`);
-    return $tweet;
-  };
-  
-  const renderTweets = (tweets) => {
-    for (const tweet of tweets) {
-      $("#tweets-container").prepend(createTweetElement(tweet));
-    }
+  </article>`);
+  return $tweet;
+};
+
+const renderTweets = (tweets) => {
+  for (const tweet of tweets) {
+    $("#tweets-container").prepend(createTweetElement(tweet));
   }
+};
   
   
 
