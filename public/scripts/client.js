@@ -14,6 +14,7 @@ const escape = (str) => {
     const $tweet = $(`
     <article class="tweet">
     <header class="tweet-header">
+      <img src=${tweet.user.avatars} width="50" height="50"> 
       <div class="users-name">
         <h2>${tweet.user.name}<h2>
       </div>
@@ -27,7 +28,11 @@ const escape = (str) => {
     <hr>
     <footer class="tweet-footer">
       <p>10 days ago</p>
-      <p class="icons">icons</p>
+      <div class="icons">
+        <i class="fas fa-flag"></i>
+        <i class="fas fa-retweet"></i>
+        <i class="fas fa-heart"></i>
+      </div>
     </footer>
     </article>`);
     return $tweet;
@@ -35,7 +40,7 @@ const escape = (str) => {
   
   const renderTweets = (tweets) => {
     for (const tweet of tweets) {
-      $("#tweets-container").append(createTweetElement(tweet));
+      $("#tweets-container").prepend(createTweetElement(tweet));
     }
   }
   
@@ -44,6 +49,8 @@ const escape = (str) => {
 
     //Hide error msg by default
     $("div.error-msg").hide();
+    //Hide tweet form by default
+    //$("#tweet-form").hide();
 
     const loadTweets = () => {
       $.get("/tweets", (tweets) => {
@@ -77,6 +84,7 @@ const escape = (str) => {
       $.post("/tweets", stringData, (tweet) => {
         $("#tweets-container").prepend(createTweetElement(tweet));
         $("div.error-msg").slideUp();
+        $("#tweet-text").val('');
 
       });
       

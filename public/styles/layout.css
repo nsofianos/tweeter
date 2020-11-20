@@ -9,7 +9,10 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 /*
  * Global layout stuff
  */
@@ -29,6 +32,16 @@ main {
   margin:auto;
   background-color: #f4f1ec;
 }
+
+@media only screen and (min-width: 1024px) {
+  main {
+    width: 50%;
+    float: right;
+    margin:1.5em;
+  }
+}
+
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions

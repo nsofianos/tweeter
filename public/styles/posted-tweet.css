@@ -7,13 +7,9 @@
     margin:1em;
     padding-left: 1em;
     padding-right: 1em;
+    word-wrap: break-word;
 }
 
-.tweet-header {
-  display:flex;
-  flex-direction:row;
-  justify-content: space-between;
-}
 .tweet:hover {
   box-shadow: 10px 10px rgba(194, 185, 185, 0.829);
   font-weight: bold;
@@ -22,7 +18,10 @@
   color:darkgray;
 }
 
-
+.tweet-header {
+  display:flex;
+  align-items:center;
+}
 .users-handle {
   color: #f4f1ec;
 }
@@ -42,4 +41,9 @@ hr {
   flex-direction: row;
   justify-content: space-between;
   font-size: 16px;
+  align-items: center;
+}
+
+div.icons {
+  color:blue;
 }
