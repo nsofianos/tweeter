@@ -1,8 +1,4 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
+const helpers = require("./helpers");
 
 const escape = (str) => {
   const div = document.createElement("div");
@@ -10,13 +6,41 @@ const escape = (str) => {
   return div.innerHTML;
 };
 
+const timeSincePosted = (date) => {
+
+  const seconds = Math.floor((new Date() - date) / 1000);
+
+  let interval = seconds / 31536000;
+
+  if (interval > 1) {
+    return Math.floor(interval) + " years";
+  }
+  interval = seconds / 2592000;
+  if (interval > 1) {
+    return Math.floor(interval) + " months";
+  }
+  interval = seconds / 86400;
+  if (interval > 1) {
+    return Math.floor(interval) + " days";
+  }
+  interval = seconds / 3600;
+  if (interval > 1) {
+    return Math.floor(interval) + " hours";
+  }
+  interval = seconds / 60;
+  if (interval > 1) {
+    return Math.floor(interval) + " minutes";
+  }
+  return Math.floor(seconds) + " seconds";
+};
+
   const createTweetElement = (tweet) => {
     const $tweet = $(`
     <article class="tweet">
     <header class="tweet-header">
-      <img src=${tweet.user.avatars} width="50" height="50"> 
+      <img class="avatar" src=${tweet.user.avatars} width="50" height="50"> 
       <div class="users-name">
-        <h2>${tweet.user.name}<h2>
+        <p>${tweet.user.name}<p>
       </div>
       <div class="users-handle">
         <h3>${tweet.user.handle}</h3>
@@ -27,7 +51,7 @@ const escape = (str) => {
     </div>
     <hr>
     <footer class="tweet-footer">
-      <p>10 days ago</p>
+      <p>${timeSincePosted(tweet.created_at)} ago</p>
       <div class="icons">
         <i class="fas fa-flag"></i>
         <i class="fas fa-retweet"></i>
@@ -44,13 +68,17 @@ const escape = (str) => {
     }
   }
   
+  
 
   $(document).ready(() => {
 
     //Hide error msg by default
     $("div.error-msg").hide();
     //Hide tweet form by default
-    //$("#tweet-form").hide();
+    $("#tweet-form").hide();
+    $("button.compose").click(() => {
+      $("#tweet-form").slideDown();
+    })
 
     const loadTweets = () => {
       $.get("/tweets", (tweets) => {
@@ -85,6 +113,7 @@ const escape = (str) => {
         $("#tweets-container").prepend(createTweetElement(tweet));
         $("div.error-msg").slideUp();
         $("#tweet-text").val('');
+        $(".counter").val(140);
 
       });
       

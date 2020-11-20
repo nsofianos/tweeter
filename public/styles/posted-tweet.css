@@ -24,6 +24,11 @@
 }
 .users-handle {
   color: #f4f1ec;
+  margin-left:auto;
+}
+
+.users-name {
+  font-size: 30px;
 }
 
 hr {
@@ -45,5 +50,13 @@ hr {
 }
 
 div.icons {
+  color:#f4f1ec;
+}
+.tweet:hover div.icons {
   color:blue;
 }
+
+img.avatar {
+  margin-right:0.5em;
+}
+

@@ -14,13 +14,24 @@ nav {
 }
 
 div.write-new-tweet {
-  font-size: 24px;
+  font-size: 28px;
   font-family: 'Source Sans Pro', sans-serif;
   display:flex;
   flex-direction: column;
   align-items: center;
 }
 
+div.write {
+  font-weight: bold;
+}
+
 #double-arrow {
   color:red;
+  font-size: 30px;
+}
+
+button.compose {
+  background-color: #4056A1;
+  border: none;
+  outline: none;
 }

@@ -1,4 +1,3 @@
-@import "variables.css";
 
 section.new-tweet {
   display: flex;
@@ -27,7 +26,7 @@ p.error-msg{
 textarea {
   width:100%;
   resize: none;
-  background-color: var(--primary-background);
+  background-color: #f4f1ec;
   border: none;
   border-bottom: 3px solid #545149;
 }
